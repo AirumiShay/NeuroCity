@@ -217,8 +217,12 @@
         function revealContent() {
             const content = document.getElementById('content');
             content.classList.toggle('visible');
-            const audio = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_9d7235e5f3.mp3?filename=click-21156.mp3');
-            audio.play();
+            try {
+                const audio = new Audio('https://freesound.org/data/previews/245/245645_4285536-lq.mp3');
+                audio.play().catch(err => console.log('Audio play failed:', err));
+            } catch (e) {
+                console.log('Audio load failed:', e);
+            }
         }
     </script>
 </body>
